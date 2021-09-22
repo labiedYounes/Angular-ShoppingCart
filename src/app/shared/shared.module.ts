@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NoProductsFoundComponent } from "./components/no-products-found/no-products-found.component";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+//import { AngularFireModule } from "@angular/fire";
+//import { AngularFireDatabaseModule } from "@angular/fire/database";
+//import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FormsModule, FormBuilder } from "@angular/forms";
 import { RouterModule, Router } from "@angular/router";
 import { OwlModule } from "ngx-owl-carousel";
@@ -26,15 +26,15 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { CdkTableModule } from "@angular/cdk/table";
 import { CdkTreeModule } from "@angular/cdk/tree";
-import { FireBaseConfig } from "./../../environments/firebase.config";
+//import { FireBaseConfig } from "./../../environments/firebase.config";
 
 @NgModule({
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    AngularFireModule.initializeApp(FireBaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    //AngularFireModule.initializeApp(FireBaseConfig),
+    //AngularFireDatabaseModule,
+    //AngularFireAuthModule,
     FormsModule,
     HttpClientModule,
     RouterModule,
@@ -55,9 +55,9 @@ import { FireBaseConfig } from "./../../environments/firebase.config";
     NoProductsFoundComponent,
     FormsModule,
     MDBBootstrapModule,
-    AngularFireModule,
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    //AngularFireModule,
+    //AngularFireAuthModule,
+    //AngularFireDatabaseModule,
     FormsModule,
     RouterModule,
     OwlModule,

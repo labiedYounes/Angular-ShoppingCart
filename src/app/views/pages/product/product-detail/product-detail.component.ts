@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   getProductDetail(id: string) {
     const x = this.productService.getProductById(id);
-    x.snapshotChanges().subscribe(
+    /* x.snapshotChanges().subscribe(
       (product) => {
         const y = { ...(product.payload.toJSON() as Product), $key: id };
         this.product = y;
@@ -37,7 +37,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       (error) => {
         this.toastrService.error("Error while fetching Product Detail", error);
       }
-    );
+    );*/
   }
 
   addToCart(product: Product) {

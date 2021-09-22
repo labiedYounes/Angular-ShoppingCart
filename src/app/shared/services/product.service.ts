@@ -1,30 +1,29 @@
 import { Injectable } from "@angular/core";
-import {
-  AngularFireDatabase,
-  AngularFireList,
-  AngularFireObject,
-} from "@angular/fire/database";
+//import {
+//  AngularFireDatabase,
+//  AngularFireList,
+//  AngularFireObject,
+//} from "@angular/fire/database";
 import { Product } from "../models/product";
 // import { AuthService } from "./auth.service";
 import { ToastrService } from "./toastr.service";
 
 @Injectable()
 export class ProductService {
-  products: AngularFireList<Product>;
-  product: AngularFireObject<Product>;
+  products: Array<Product>;
+  product: Product;
 
   // favouriteProducts
-  favouriteProducts: AngularFireList<FavouriteProduct>;
-  cartProducts: AngularFireList<FavouriteProduct>;
+  favouriteProducts: Array<FavouriteProduct>;
+  cartProducts: Array<FavouriteProduct>;
 
   constructor(
-    private db: AngularFireDatabase,
     // private authService: AuthService,
     private toastrService: ToastrService
   ) {}
 
   getProducts() {
-    this.products = this.db.list("products");
+    //    this.products = this.db.list("products");
     return this.products;
   }
 
@@ -34,16 +33,16 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    this.product = this.db.object("products/" + key);
+    //   this.product = this.db.object("products/" + key);
     return this.product;
   }
 
   updateProduct(data: Product) {
-    this.products.update(data.$key, data);
+    //  this.products.update(data.$key, data);
   }
 
   deleteProduct(key: string) {
-    this.products.remove(key);
+    // this.products.remove(key);
   }
 
   /*
@@ -82,7 +81,7 @@ export class ProductService {
 
   // Removing Favourite Product from Database
   removeFavourite(key: string) {
-    this.favouriteProducts.remove(key);
+    // this.favouriteProducts.remove(key);
   }
 
   // Removing Favourite Product from localStorage

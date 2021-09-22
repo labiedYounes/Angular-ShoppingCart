@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
+//import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
-import * as firebase from "firebase/app";
+//import * as firebase from "firebase/app";
 import { BehaviorSubject, Observable } from "rxjs";
 import { filter, map } from "rxjs/operators";
 
@@ -12,7 +12,7 @@ export const ANONYMOUS_USER: User = new User();
 
 @Injectable()
 export class AuthService {
-  user: Observable<firebase.User>;
+  user: Observable<User>;
 
   private subject = new BehaviorSubject<User>(undefined);
 
@@ -33,11 +33,11 @@ export class AuthService {
   );
 
   constructor(
-    private firebaseAuth: AngularFireAuth,
+    private firebaseAuth: Object,
     private router: Router,
     private userService: UserService
   ) {
-    this.user = firebaseAuth.authState;
+    /*   this.user = firebaseAuth.authState;
 
     this.user.subscribe((user) => {
       console.log({ user });
@@ -67,31 +67,33 @@ export class AuthService {
       } else {
         this.subject.next(ANONYMOUS_USER);
       }
-    });
+    });*/
   }
 
   logout() {
-    this.firebaseAuth.signOut().then((res) => {
+    /* this.firebaseAuth.signOut().then((res) => {
       this.subject.next(ANONYMOUS_USER);
       this.router.navigate(["/"]);
     });
+ */
   }
 
   createUserWithEmailAndPassword(emailID: string, password: string) {
-    return this.firebaseAuth.createUserWithEmailAndPassword(emailID, password);
+    // return this.firebaseAuth.createUserWithEmailAndPassword(emailID, password);
+    return null;
   }
 
   signInRegular(email: string, password: string) {
-    const credential = firebase.auth.EmailAuthProvider.credential(
-      email,
-      password
-    );
-    return this.firebaseAuth.signInWithEmailAndPassword(email, password);
+    // const credential = firebase.auth.EmailAuthProvider.credential(
+    //   email,
+    //   password
+    // );
+    // return this.firebaseAuth.signInWithEmailAndPassword(email, password);
   }
 
   signInWithGoogle() {
-    return this.firebaseAuth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider()
-    );
+    // return this.firebaseAuth.signInWithPopup(
+    //   new firebase.auth.GoogleAuthProvider()
+    // );
   }
 }

@@ -40,7 +40,7 @@ export class BestProductComponent implements OnInit {
   getAllProducts() {
     this.loading = true;
     const x = this.productService.getProducts();
-    x.snapshotChanges()
+    /*x.snapshotChanges()
       .pipe(map((products) => products.slice(0, 5)))
       .subscribe(
         (products) => {
@@ -54,6 +54,6 @@ export class BestProductComponent implements OnInit {
         (error) => {
           this.toasterService.error("Error while fetching Products", error);
         }
-      );
+      );*/
   }
 }

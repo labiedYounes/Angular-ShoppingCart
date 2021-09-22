@@ -1,8 +1,8 @@
-import {
-  AngularFireList,
-  AngularFireObject,
-  AngularFireDatabase,
-} from "@angular/fire/database";
+//import {
+//  AngularFireList,
+//  AngularFireObject,
+//  AngularFireDatabase,
+//} from "@angular/fire/database";
 import { Billing } from "./../models/billing";
 import { Injectable } from "@angular/core";
 
@@ -10,9 +10,9 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class BillingService {
-  billings: AngularFireList<Billing>;
-  billing: AngularFireObject<Billing>;
-  constructor(private db: AngularFireDatabase) {
+  billings: Array<Billing>;
+  billing: Billing;
+  constructor(private db: Object) {
     this.getBillings();
   }
 
@@ -21,20 +21,20 @@ export class BillingService {
   }
 
   getBillings() {
-    this.billings = this.db.list("billings");
+    //this.billings = this.db.list("billings");
     return this.billings;
   }
 
   getBillingById(key: string) {
-    this.billing = this.db.object("products/" + key);
+    //this.billing = this.db.object("products/" + key);
     return this.billing;
   }
 
   updateBilling(data: Billing) {
-    this.billings.update(data.$key, data);
+    //this.billings.update(data.$key, data);
   }
 
   deleteBilling(key: string) {
-    this.billings.remove(key);
+    //this.billings.remove(key);
   }
 }

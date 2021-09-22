@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
   getAllProducts() {
     this.loading = true;
     const x = this.productService.getProducts();
-    x.snapshotChanges().subscribe(
+    /*x.snapshotChanges().subscribe(
       (product) => {
         this.loading = false;
         this.productList = [];
@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit {
       (err) => {
         this.toastrService.error("Error while fetching Products", err);
       }
-    );
+    );*/
   }
 
   removeProduct(key: string) {
