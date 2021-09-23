@@ -96,4 +96,10 @@ export class AuthService {
     //   new firebase.auth.GoogleAuthProvider()
     // );
   }
+  signInWith(provider: string) {
+    //return new Promise<User>();
+    // return this.firebaseAuth.signInWithPopup(
+    //   new firebase.auth.GoogleAuthProvider()
+    // );
+  }
 }

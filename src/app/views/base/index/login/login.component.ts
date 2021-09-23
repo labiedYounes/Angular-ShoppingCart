@@ -3,7 +3,7 @@ import { NgForm, EmailValidator } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../../../../shared/services/user.service";
-// import { AuthService } from "../../../../shared/services/auth.service";
+import { AuthService } from "../../../../shared/services/auth.service";
 import { User } from "../../../../shared/models/user";
 declare var $: any;
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   createUser;
 
   constructor(
-    // private authService: AuthService,
+    private authService: AuthService,
     private userService: UserService,
     private toastService: ToastrService,
     private router: Router,
@@ -100,5 +100,20 @@ export class LoginComponent implements OnInit {
     //   .catch((err) => {
     //     this.toastService.error("Error Occured", "Please try again later");
     //   });
+  }
+  signInWith(provider: string) {
+    /* this.authService
+       .signInWith(provider)
+       .then((res) => {
+        // if (res.additionalUserInfo.isNewUser) {
+        //   this.userService.createUser(res.additionalUserInfo.profile);
+        // }
+        // const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+         // location.reload();
+         this.router.navigate(["/"]);
+       })
+       .catch((err) => {
+         this.toastService.error("Error Occured", "Please try again later");
+       });*/
   }
 }
