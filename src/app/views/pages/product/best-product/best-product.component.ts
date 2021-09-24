@@ -39,7 +39,16 @@ export class BestProductComponent implements OnInit {
 
   getAllProducts() {
     this.loading = true;
-    const x = this.productService.getProducts();
+    this.productService.getList().subscribe(
+      (productList: Product[]) => {
+        this.bestProducts = productList.slice(0, 5);
+        this.loading = false;
+      },
+      (error) => {
+        this.toasterService.error("Error while fetching Products", error);
+      }
+    );
+    //const x = this.productService.getProducts();
     /*x.snapshotChanges()
       .pipe(map((products) => products.slice(0, 5)))
       .subscribe(

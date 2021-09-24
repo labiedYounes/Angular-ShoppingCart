@@ -1,6 +1,7 @@
 export class User {
   $key: string;
   userName: string;
+  fullname: string;
   emailId: string;
   password?: string;
   location?: {

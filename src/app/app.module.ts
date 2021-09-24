@@ -12,6 +12,7 @@ import { SharedModule } from "./shared/shared.module";
 import { TranslateService } from "./shared/services/translate.service";
 import { ProductModule } from "./views/pages/product/product.module";
 import { UserModule } from "./views/pages/user/user.module";
+import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 
@@ -22,6 +23,7 @@ export function setupTranslateFactory(service: TranslateService) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

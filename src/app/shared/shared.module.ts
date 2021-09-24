@@ -75,7 +75,7 @@ import { CdkTreeModule } from "@angular/cdk/tree";
     ScrollingModule,
   ],
   providers: [
-    // AuthService,
+    AuthService,
     // AuthGuard,
     // AdminGaurd,
     ProductService,

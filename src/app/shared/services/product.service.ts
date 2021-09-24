@@ -7,20 +7,24 @@ import { Injectable } from "@angular/core";
 import { Product } from "../models/product";
 // import { AuthService } from "./auth.service";
 import { ToastrService } from "./toastr.service";
+import { BaseService } from "./base.service";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
-export class ProductService {
+export class ProductService extends BaseService<Product> {
   products: Array<Product>;
   product: Product;
 
   // favouriteProducts
   favouriteProducts: Array<FavouriteProduct>;
   cartProducts: Array<FavouriteProduct>;
-
-  constructor(
+  constructor(private httpClient: HttpClient) {
+    super(httpClient, "products");
+  }
+  /* constructor(
     // private authService: AuthService,
     private toastrService: ToastrService
-  ) {}
+  ) {}*/
 
   getProducts() {
     //    this.products = this.db.list("products");
@@ -65,7 +69,7 @@ export class ProductService {
   addFavouriteProduct(data: Product): void {
     const a: Product[] = JSON.parse(localStorage.getItem("avf_item")) || [];
     a.push(data);
-    this.toastrService.wait("Adding Product", "Adding Product as Favourite");
+    //this.toastrService.wait("Adding Product", "Adding Product as Favourite");
     setTimeout(() => {
       localStorage.setItem("avf_item", JSON.stringify(a));
     }, 1500);
@@ -86,7 +90,7 @@ export class ProductService {
 
   // Removing Favourite Product from localStorage
   removeLocalFavourite(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
+    /* const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
 
     for (let i = 0; i < products.length; i++) {
       if (products[i].productId === product.productId) {
@@ -95,7 +99,7 @@ export class ProductService {
       }
     }
     // ReAdding the products after remove
-    localStorage.setItem("avf_item", JSON.stringify(products));
+    localStorage.setItem("avf_item", JSON.stringify(products));*/
   }
 
   /*
@@ -107,10 +111,10 @@ export class ProductService {
     const a: Product[] = JSON.parse(localStorage.getItem("avct_item")) || [];
     a.push(data);
 
-    this.toastrService.wait(
+    /*this.toastrService.wait(
       "Adding Product to Cart",
       "Product Adding to the cart"
-    );
+    );*/
     setTimeout(() => {
       localStorage.setItem("avct_item", JSON.stringify(a));
     }, 500);
@@ -118,7 +122,7 @@ export class ProductService {
 
   // Removing cart from local
   removeLocalCartProduct(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
+    /*const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
 
     for (let i = 0; i < products.length; i++) {
       if (products[i].productId === product.productId) {
@@ -127,7 +131,7 @@ export class ProductService {
       }
     }
     // ReAdding the products after remove
-    localStorage.setItem("avct_item", JSON.stringify(products));
+    localStorage.setItem("avct_item", JSON.stringify(products));*/
   }
 
   // Fetching Locat CartsProducts

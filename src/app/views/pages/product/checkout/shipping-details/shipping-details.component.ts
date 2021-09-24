@@ -46,8 +46,8 @@ export class ShippingDetailsComponent implements OnInit {
     const products = [];
     let totalPrice = 0;
     this.products.forEach((product) => {
-      delete product.$key;
-      totalPrice += product.productPrice;
+      /*delete product.$key;
+      totalPrice += product.productPrice;*/
       products.push(product);
     });
     const data = {

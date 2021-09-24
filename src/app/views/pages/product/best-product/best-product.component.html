@@ -37,10 +37,10 @@
         <!--Card-->
         <div class="card card-cascade wider">
           <!--Card image-->
-          <a [routerLink]="['/products/product', product.$key]">
+          <a [routerLink]="['/products/product', product.id]">
             <div class="view overlay hm-white-slight">
               <img
-                [src]="product.productImageUrl"
+                [src]="product.imgs"
                 class="img-fluid"
                 alt=""
                 width="360px"
@@ -60,22 +60,22 @@
           <div class="card-body text-center no-padding">
             <!--Category & Title-->
             <a href="" class="text-muted">
-              <h5>{{ product.productCategory }}</h5>
+              <h5>{{ product.categoryId }}</h5>
             </a>
             <h5 class="card-title">
               <strong>
-                <a [routerLink]="['/products/product', product.$key]">{{
-                  product.productName
+                <a [routerLink]="['/products/product', product.id]">{{
+                  product.name
                 }}</a>
               </strong>
             </h5>
 
             <!--Description-->
-            <p class="card-text">{{ product.productDescription }}</p>
+            <p class="card-text">{{ product.description }}</p>
 
             <!--Card footer-->
             <div class="card-footer">
-              <span class="left">₹ {{ product.productPrice }}</span>
+              <span class="left">€{{ product.price }}</span>
               <span class="right">
                 <a
                   placement="top"

@@ -28,13 +28,13 @@
         >
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="productName">Product Name</label>
+              <label for="name">Product Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="productName"
-                name="productName"
-                [(ngModel)]="product.productName"
+                id="name"
+                name="name"
+                [(ngModel)]="product.name"
                 placeholder="Product Name"
                 value=""
                 required
@@ -44,17 +44,17 @@
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="productCategory">Product Category</label>
+              <!--<label for="category.id">Product Category</label>
               <input
                 type="text"
                 class="form-control"
-                id="productCategory"
-                name="productCategory"
-                [(ngModel)]="product.productCategory"
+                id="category.id"
+                name="category.id"
+                [(ngModel)]="product.category.id"
                 placeholder="Product Category"
                 value=""
                 required
-              />
+              />-->
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -62,30 +62,30 @@
           </div>
 
           <div class="mb-3">
-            <label for="productDescription"
+            <label for="description"
               >Product Description
               <span class="text-muted">(Optional)</span>
             </label>
             <textarea
               type="text"
               class="form-control"
-              id="productDescription"
+              id="description"
               placeholder="Product Description"
-              name="productDescription"
-              [(ngModel)]="product.productDescription"
+              name="description"
+              [(ngModel)]="product.description"
             ></textarea>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="productPrice">Product Price</label>
+              <label for="price">Product Price</label>
               <input
                 type="number"
-                name="productPrice"
+                name="price"
                 class="form-control"
-                [(ngModel)]="product.productPrice"
+                [(ngModel)]="product.price"
                 placeholder="Product Price"
-                id="productPrice"
+                id="price"
                 value=""
                 required
               />
@@ -94,13 +94,13 @@
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="productQuatity">Product Quantity</label>
+              <label for="quantity">Product Quantity</label>
               <input
                 type="text"
                 class="form-control"
-                id="productQuatity"
-                name="productQuatity"
-                [(ngModel)]="product.productQuatity"
+                id="quantity"
+                name="quantity"
+                [(ngModel)]="product.quantity"
                 placeholder="Product Quantity"
                 value=""
                 required
@@ -112,25 +112,24 @@
           </div>
 
           <div class="mb-3">
-            <label for="productSeller">Product Seller</label>
+            <!-- <label for="productSeller">Product Seller</label>
             <input
               type="text"
               class="form-control"
               id="productSeller"
-              [(ngModel)]="product.productSeller"
               name="productSeller"
               placeholder="Product Seller"
               required
-            />
+            />-->
           </div>
           <div class="mb-3">
-            <label for="productImageUrl">Product Image</label>
+            <label for="imgs">Product Image</label>
             <input
               type="text"
               class="form-control"
-              id="productImageUrl"
-              [(ngModel)]="product.productImageUrl"
-              name="productImageUrl"
+              id="imgs"
+              [(ngModel)]="product.imgs"
+              name="imgs"
               placeholder="Image Url"
               required
             />

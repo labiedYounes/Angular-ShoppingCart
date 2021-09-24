@@ -1,12 +1,14 @@
 <br />
+
 <div class="container">
-  <div class="row">
+  <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>
+  <div class="row" *ngIf="!loading">
     <div class="col-sm-4">
       <div class="product-image">
         <div class="view hm-zoom z-depth-2" style="cursor: pointer;">
           <img
-            [src]="product.productImageUrl"
-            [alt]="product.productName"
+            [src]="product.imgs"
+            [alt]="product.name"
             width="100%"
             class="img-fluid rounded"
           />
@@ -20,7 +22,7 @@
                 <h6 class="my-0">Product Price</h6>
               </div>
               <span class="text-muted" style="color: crimson !important;"
-                >₹ {{ product.productPrice }}</span
+                >€{{ product.price }}</span
               >
             </li>
             <li
@@ -30,7 +32,7 @@
                 <h6 class="my-0">Product Seller</h6>
               </div>
               <span class="text-muted" style="color: crimson !important;">{{
-                product.productSeller
+                seller ? seller.fullname : "loading..."
               }}</span>
             </li>
           </ul>
@@ -47,24 +49,24 @@
           <tbody>
             <tr>
               <th scope="row">Product Name</th>
-              <td>{{ product.productName }}</td>
+              <td>{{ product.name }}</td>
             </tr>
             <tr>
               <th scope="row">Product Description</th>
-              <td>{{ product.productDescription }}</td>
+              <td>{{ product.description }}</td>
             </tr>
             <tr>
               <th scope="row">Product Category</th>
-              <td>{{ product.productCategory }}</td>
+              <td>{{ category ? category.name : "loading..." }}</td>
             </tr>
             <tr>
-              <th scope="row">No. of quantity available</th>
-              <td>{{ product.productQuatity }}</td>
+              <th scope="row">Quantity available</th>
+              <td>{{ product.quantity }}</td>
             </tr>
-            <tr>
+            <!--<tr>
               <th scope="row">Product Added on</th>
               <td>{{ product.productAdded * 1000 | date }}</td>
-            </tr>
+            </tr>-->
           </tbody>
         </table>
       </div>

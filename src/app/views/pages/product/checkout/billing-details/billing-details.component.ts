@@ -44,8 +44,8 @@ export class BillingDetailsComponent implements OnInit {
     let totalPrice = 0;
     const products = [];
     this.products.forEach((product) => {
-      delete product.$key;
-      totalPrice += product.productPrice;
+      /*delete product.$key;
+      totalPrice += product.productPrice;*/
       products.push(product);
     });
 

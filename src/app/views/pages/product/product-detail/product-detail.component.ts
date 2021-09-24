@@ -3,6 +3,11 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ProductService } from "../../../../shared/services/product.service";
 import { ToastrService } from "src/app/shared/services/toastr.service";
+import { User } from "../../../../shared/models/user";
+import { Category } from "../../../../shared/models/category";
+import { UserService } from "../../../../shared/services/user.service";
+import { CategoryService } from "../../../../shared/services/category.service";
+import { BaseService } from "../../../../shared/services/base.service";
 @Component({
   selector: "app-product-detail",
   templateUrl: "./product-detail.component.html",
@@ -11,14 +16,17 @@ import { ToastrService } from "src/app/shared/services/toastr.service";
 export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub: any;
   product: Product;
+  seller: User;
+  category: Category;
+  loading: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private userService: UserService,
+    private categoryService: CategoryService,
     private toastrService: ToastrService
-  ) {
-    this.product = new Product();
-  }
+  ) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params) => {
@@ -27,17 +35,44 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  getProductDetail(id: string) {
-    const x = this.productService.getProductById(id);
-    /* x.snapshotChanges().subscribe(
-      (product) => {
-        const y = { ...(product.payload.toJSON() as Product), $key: id };
-        this.product = y;
+  private loadResource(
+    method: string,
+    httpService: BaseService<any>,
+    methodInfo: any
+  ) {
+    httpService[method](methodInfo.recourceId).subscribe(
+      methodInfo.callback,
+      (error) => {
+        this.toastrService.error(methodInfo.onError, error);
+      }
+    );
+  }
+
+  getProductDetail(id: number) {
+    this.loading = true;
+    this.productService.getById(id).subscribe(
+      (product: Product) => {
+        this.product = product;
+        this.loadResource("getById", this.userService, {
+          recourceId: product.userId,
+          callback: (resource) => {
+            this.seller = resource;
+          },
+          onError: "Error while fetching seller Detail",
+        });
+        this.loadResource("getById", this.categoryService, {
+          recourceId: product.categoryId,
+          callback: (resource) => {
+            this.category = resource;
+          },
+          onError: "Error while fetching seller Detail",
+        });
+        this.loading = false;
       },
       (error) => {
         this.toastrService.error("Error while fetching Product Detail", error);
       }
-    );*/
+    );
   }
 
   addToCart(product: Product) {

@@ -5,8 +5,10 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 import { filter, map } from "rxjs/operators";
 
+import { CookieService } from "ngx-cookie-service";
 import { User } from "../models/user";
 import { UserService } from "./user.service";
+import { HttpClient } from "@angular/common/http";
 
 export const ANONYMOUS_USER: User = new User();
 
@@ -14,6 +16,7 @@ export const ANONYMOUS_USER: User = new User();
 export class AuthService {
   user: Observable<User>;
 
+  public authUrl = "http://localhost:8080/oauth2/authorization/";
   private subject = new BehaviorSubject<User>(undefined);
 
   user$: Observable<User> = this.subject
@@ -33,7 +36,8 @@ export class AuthService {
   );
 
   constructor(
-    private firebaseAuth: Object,
+    private httpClient: HttpClient,
+    private cookieService: CookieService,
     private router: Router,
     private userService: UserService
   ) {
@@ -96,10 +100,8 @@ export class AuthService {
     //   new firebase.auth.GoogleAuthProvider()
     // );
   }
-  signInWith(provider: string) {
-    //return new Promise<User>();
-    // return this.firebaseAuth.signInWithPopup(
-    //   new firebase.auth.GoogleAuthProvider()
-    // );
+
+  signInWith(provider: string): Observable<object> {
+    return this.httpClient.get(this.authUrl + provider);
   }
 }

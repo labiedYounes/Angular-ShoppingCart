@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 
 import * as moment from "moment";
 import { User } from "../models/user";
+import { BaseService } from "./base.service";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
-export class UserService {
+export class UserService extends BaseService<User> {
   selectedUser: User = new User();
   users: Array<User>;
 
@@ -12,10 +14,12 @@ export class UserService {
     lat: null,
     lon: null,
   };
-
-  constructor() {
-    this.getUsers();
+  constructor(private httpClient: HttpClient) {
+    super(httpClient, "users");
   }
+  /*constructor() {
+    this.getUsers();
+  }*/
 
   getUsers() {
     //this.users = this.db.list("clients");

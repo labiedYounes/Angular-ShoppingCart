@@ -1,14 +1,13 @@
+import { Category } from "./category";
+
 export class Product {
-  $key: string;
-  productId: number;
-  productName: string;
-  productCategory: string;
-  productPrice: number;
-  productDescription: string;
-  productImageUrl: string;
-  productAdded: number;
-  productQuatity: number;
-  ratings: number;
-  favourite: boolean;
-  productSeller: string;
+  id: number;
+  name: string;
+  categoryId: number;
+  userId: number;
+  price: number;
+  description: string;
+  imgs: string;
+  quantity: number;
+  category: Category;
 }
